@@ -1,0 +1,25 @@
+name: Issue & PR Tracker
+
+on:
+  pull_request_target:
+    types: [labeled]
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  close-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    if: github.event.label.name == 'Template Proposal'
+    steps:
+      - name: Close proposals
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.label.number }}
+        run: |
+          gh pr close "${PR}" --comment "We are no longer accepting proposals"

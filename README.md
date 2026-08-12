@@ -12,8 +12,7 @@ An [Unraid](https://discord.gg/qWPbc8R) community repo where you can request Unr
 > [!IMPORTANT]
 > As the personal usage of Unraid of the original creators of this organization has slowed down, so has the interest of maintaining this repo.
 
-There is no active plans to stop providing these templates, but the request part is going away.
-Pull requests will still be reviewed.
+Pull requests with bug-fixes will still be reviewed.
 
 If you have a app in this repo, I urge you to consider these options for a smooth transition:
 
@@ -22,16 +21,7 @@ If you have a app in this repo, I urge you to consider these options for a smoot
 
 #### Coordination
 
-Please make a issue in this repo so we can coordinate this move.
-
-### Accepted application terms
-
-For a pull request to be reviewed
-
-- The template must be made by a user with previous activity on GitHub
-- The application must be of certain quality
-  - Not fully AI written
-  - Be attributed to a GitHub account with an active history
+Please create a issue in this repo so we can coordinate this move.
 
 ### Creating a template
 
