@@ -1,0 +1,69 @@
+<!--
+Community Applications template for audiostudio
+Author: kimhero110
+-->
+<Container>
+  <Name>audiostudio</Name>
+  <Repository>xudong001/audiostudio</Repository>
+  <Registry>https://hub.docker.com/r/xudong001/audiostudio</Registry>
+  <Support>https://github.com/kimhero110/audiostudio/issues</Support>
+  <Overview>audiostudio - 自托管 MP3 / 有声书标签清洗工具（NAS / Docker）。扫描音乐库 -> 按规则生成纯预览变更 -> 自动整文件备份后原地应用 -> 一键字节级回滚。支持：广告/来源标记清理（共用正则，含中文下载站）、乱码修复、按标签重建文件名（BRU 风格规则栈 + 实时预览）、封面管理（嵌入/去重/压缩/替换）、有声书规则（作者-书名-分P）、MusicBrainz 可选、AudioBookshelf / Jellyfin 平台预设。</Overview>
+  <Category>MediaServer:Tools AudioVideoBooks Tools</Category>
+  <TemplateURL>https://raw.githubusercontent.com/kimhero110/audiostudio/main/unraid/audiostudio/audiostudio.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/kimhero110/audiostudio/main/unraid/audiostudio/icon/audiostudio.png</Icon>
+  <Description>NAS 自托管 MP3 / 有声书标签清洗工具（备份-应用-字节级回滚）</Description>
+  <Privileged>false</Privileged>
+  <Support level="community"/>
+  <Networking>
+    <Port>
+      <HostPort>8080</HostPort>
+      <ContainerPort>8000</ContainerPort>
+      <Protocol>tcp</Protocol>
+    </Port>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/audiostudio/data</HostDir>
+      <ContainerDir>/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/Media</HostDir>
+      <ContainerDir>/library</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Name>PUID</Name>
+      <Value>99</Value>
+      <Mode>rw</Mode>
+      <Description>匹配音乐库文件属主的 UID（Unraid 默认 nobody=99）。请改为你的实际属主。</Description>
+    </Variable>
+    <Variable>
+      <Name>PGID</Name>
+      <Value>100</Value>
+      <Mode>rw</Mode>
+      <Description>匹配音乐库文件属主的 GID（Unraid 默认 users=100）。</Description>
+    </Variable>
+    <Variable>
+      <Name>APP_PASSWORD</Name>
+      <Value></Value>
+      <Mode>rw</Mode>
+      <Description>登录密码（唯一凭据源）。</Description>
+    </Variable>
+    <Variable>
+      <Name>IP_ALLOWLIST</Name>
+      <Value></Value>
+      <Mode>rw</Mode>
+      <Description>可选：IP 白名单（CIDR，逗号分隔）。留空=不限制。</Description>
+    </Variable>
+    <Variable>
+      <Name>TRUSTED_PROXY_IP</Name>
+      <Value></Value>
+      <Mode>rw</Mode>
+      <Description>可选：反向代理 IP（信任其 X-Forwarded-For）。</Description>
+    </Variable>
+  </Environment>
+  <Labels/>
+</Container>
